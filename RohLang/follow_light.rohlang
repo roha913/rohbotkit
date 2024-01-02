@@ -1,0 +1,10 @@
+// Follow a light source continuously
+WHILE true
+    IF LEFT_LIGHT > RIGHT_LIGHT
+        TURN L 10  // Slight left turn
+    ELSEIF RIGHT_LIGHT > LEFT_LIGHT
+        TURN R 10  // Slight right turn
+    ELSE
+        F 1  // Move forward if light is balanced
+    ENDIF
+ENDWHILE

@@ -1,0 +1,10 @@
+// Follow a line using IR sensors
+WHILE true
+    IF LEFT_IR == black AND RIGHT_IR == white
+        TURN L 10  // Adjust left
+    ELSEIF LEFT_IR == white AND RIGHT_IR == black
+        TURN R 10  // Adjust right
+    ELSE
+        F 1  // Move forward if on track
+    ENDIF
+ENDWHILE

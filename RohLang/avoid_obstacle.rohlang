@@ -1,0 +1,8 @@
+// Continuously move forward and avoid obstacles
+WHILE true
+    F 1  // Move forward for 1 second
+    IF SENSOR == obstacle
+        STOP  // Stop movement
+        R 90  // Turn right 90 degrees
+    ENDIF
+ENDWHILE

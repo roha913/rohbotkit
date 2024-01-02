@@ -1,0 +1,12 @@
+// Define a function for a specific movement pattern
+FUNCTION zigzag
+    F 2  // Move forward
+    TURN R 45  // Turn slightly right
+    F 2  // Move forward
+    TURN L 45  // Turn slightly left
+ENDFUNCTION
+
+// Execute the zigzag pattern 3 times
+LOOP 3
+    CALL zigzag
+ENDLOOP

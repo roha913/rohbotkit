@@ -1,0 +1,6 @@
+// Deliver an item from point A to point B
+F 5     // Move forward 5 seconds to reach point A
+PICK    // Pick up the item
+TURN R 180  // Turn around
+F 5     // Move back to starting point
+DROP    // Drop the item at point B
