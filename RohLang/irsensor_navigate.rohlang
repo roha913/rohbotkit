@@ -1,10 +1,19 @@
-// Follow a line using IR sensors
+// Advanced IR Sensor Line Following Program
 WHILE true
+    READ LEFT_IR, RIGHT_IR, MID_IR
+
+    // Enhanced decision making for more precise line following
     IF LEFT_IR == black AND RIGHT_IR == white
-        TURN L 10  // Adjust left
+        // More granular adjustment to the left
+        TURN L ADJUST_ANGLE(LEFT_IR, MID_IR)
     ELSEIF LEFT_IR == white AND RIGHT_IR == black
-        TURN R 10  // Adjust right
+        // More granular adjustment to the right
+        TURN R ADJUST_ANGLE(RIGHT_IR, MID_IR)
+    ELSEIF MID_IR == black
+        // Maintain straight path when centered on the line
+        F ADJUST_SPEED(MID_IR)
     ELSE
-        F 1  // Move forward if on track
+        // Search for line if lost
+        SEARCH_FOR_LINE()
     ENDIF
 ENDWHILE
