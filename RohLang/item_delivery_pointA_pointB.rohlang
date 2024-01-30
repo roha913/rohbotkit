@@ -19,3 +19,4 @@ ENDWHILE
 DROP  // Drop the item at B
 
 NAVIGATE_TO HOME_BASE
+
