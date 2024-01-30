@@ -1,8 +1,20 @@
-// Continuously move forward and avoid obstacles
+// Continuously move forward and avoid obstacles with enhanced logic
 WHILE true
     F 1  // Move forward for 1 second
     IF SENSOR == obstacle
         STOP  // Stop movement
-        R 90  // Turn right 90 degrees
+        // Check left and right for alternative path
+        L 90  // Turn left 90 degrees
+        IF SENSOR != obstacle
+            F 1  // Move forward if path is clear
+        ELSE
+            R 180  // If left is blocked, turn right 180 degrees
+            IF SENSOR == obstacle
+                // If both sides are blocked, turn back to original direction and move back a bit
+                L 90
+                B 0.5  // Move backward for 0.5 seconds
+            ENDIF
+        ENDIF
+        R 90  // Realign to original direction
     ENDIF
 ENDWHILE
