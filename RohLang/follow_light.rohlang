@@ -1,10 +1,20 @@
-// Follow a light source continuously
+// Advanced Follow Light Program
 WHILE true
-    IF LEFT_LIGHT > RIGHT_LIGHT
-        TURN L 10  // Slight left turn
-    ELSEIF RIGHT_LIGHT > LEFT_LIGHT
-        TURN R 10  // Slight right turn
+    READ LEFT_LIGHT, RIGHT_LIGHT, FRONT_LIGHT
+    DIFF = ABS(LEFT_LIGHT - RIGHT_LIGHT)
+    
+    // Adjust for varying light intensity and direction
+    IF DIFF < THRESHOLD
+        IF FRONT_LIGHT > MIN_FRONT_LIGHT
+            F SPEED(FRONT_LIGHT)  // Adjust speed based on front light intensity
+        ELSE
+            STOP  // Stop if front light is too weak
+        ENDIF
     ELSE
-        F 1  // Move forward if light is balanced
+        IF LEFT_LIGHT > RIGHT_LIGHT
+            TURN L ANGLE(DIFF)  // Turn left with an angle proportional to the difference
+        ELSE
+            TURN R ANGLE(DIFF)  // Turn right similarly
+        ENDIF
     ENDIF
 ENDWHILE
